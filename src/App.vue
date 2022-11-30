@@ -20,10 +20,12 @@ export default defineComponent({
 </script>
 
 <template>
-  <Header-comp></Header-comp>
-  <Floor-comp></Floor-comp>
+  <div class="control-salas p-5">
+    <Header-comp></Header-comp>
+    <Floor-comp></Floor-comp>
+  </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

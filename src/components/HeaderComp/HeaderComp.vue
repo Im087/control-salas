@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <h1>Salas</h1>
-    <select class="custom-select">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+  <div class="header-comp">
+    <h1 class="header-comp_title mb-5">Salas</h1>
+    <select class="header-comp_floor-selector custom-select-lg mb-3">
+      <option selected>Elige una planta</option>
+      <option value="1">Planta1</option>
+      <option value="2">Planta2</option>
+      <option value="3">Planta3</option>
     </select>
+    <hr>
   </div>
 </template>
 
@@ -21,6 +22,19 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
+.header-comp {
 
+  &_title {
+    font-weight: bold;
+    color: #2e344d;
+  }
+
+  &_floor-selector {
+    width: 250px;
+    border: #2e344d 1px solid;
+    border-radius: 12px;
+    color: #2e344d;
+  }
+}
 </style>
