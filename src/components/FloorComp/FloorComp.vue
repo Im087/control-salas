@@ -5,7 +5,7 @@
       <button class="floor-comp_add-button btn btn-lg px-5 py-3" type="button" @click="addRoom(selectedFloorId)">Añadir sala</button>
     </div>
     <div class="d-flex flex-wrap p-n3">
-      <Room-comp v-for="room in rooms" :key="room.id" :room="room"></Room-comp>
+      <Room-comp v-for="room in rooms" :key="room.id" :floors="floors" :room="room"></Room-comp>
     </div>
   </div>
 </template>
@@ -43,13 +43,14 @@ export default defineComponent({
     const rooms = computed(() => selectedFloor.value?.rooms);
 
     const addRoom = (id: number) => {
-      console.log(id);
       store.dispatch('addRoom', id);
+      window.localStorage.setItem('floors', JSON.stringify(floors.value));
     };
 
     return {
       RoomComp,
       selectedFloorId,
+      floors,
       selectedFloor,
       rooms,
       addRoom

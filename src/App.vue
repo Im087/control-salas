@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, onMounted, ref } from 'vue';
+import { computed, ComputedRef, defineComponent } from 'vue';
 import axios from 'axios';
 import { Floor } from './interfaces';
 import { useStore } from './store';
@@ -20,8 +20,13 @@ export default defineComponent({
     const selectedFloorId = computed(() => store.getters.getSelectedFloorId);
 
     const getFloorsData = async () => {
-      const {data: res} = await axios.get('./mock/floors.json');
-      store.dispatch('setFloors', res.floors);
+      const localFloors = window.localStorage.getItem('floors');
+      if(localFloors) {
+        store.dispatch('setFloors', JSON.parse(localFloors));
+      } else {
+        const { data: res } = await axios.get('./mock/floors.json');
+        store.dispatch('setFloors', res.floors);
+      }
     };
 
     getFloorsData();

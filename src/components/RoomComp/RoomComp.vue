@@ -3,37 +3,47 @@
     <h3 class="room-comp_title mb-4">{{ room.name }}</h3>
     <div class="d-flex flex-column mb-4">
       <label class="room-comp_label" for="capacity">Capacidad máxima</label>
-      <input type="tel" class="room-comp_input form-control-lg" id="capacity" v-model="room.capacity">
+      <input type="number" class="room-comp_input form-control-lg" id="capacity" v-model="room.capacity">
     </div>
     <div class="d-fle flex-column mb-4">
       <label class="room-comp_label" for="occupation">Ocupación</label>
       <div class="input-group">
-        <input type="tel" class="room-comp_input room-comp_input-prepend form-control-lg" id="occupation" v-model="room.occupation">
+        <input type="number" max="100" class="room-comp_input room-comp_input-prepend form-control-lg" id="occupation" v-model="room.occupation">
         <div class="input-group-append">
           <div class="room-comp_append input-group-text">%</div>
         </div>
       </div>
     </div>
-    <button class="room-comp_modify-button btn align-self-end px-5 py-3" type="button">Modificar</button>
+    <button class="room-comp_modify-button btn align-self-end px-5 py-3" type="button" @click="modifyRoom">Modificar</button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, toRefs } from 'vue';
-import { Room } from '../../interfaces';
+import { Floor, Room } from '../../interfaces';
 
 export default defineComponent({
   name: 'RoomComp',
   props: {
+    floors: {
+      type: Array as PropType<Floor[]>,
+      required: true,
+      deep: true
+    },
     room: {
       type: Object as PropType<Room>,
       required: true,
     }
   },
   setup(props) {
+    const floors = toRefs(props).floors;
     const room = toRefs(props).room;
+    const modifyRoom = () => {
+      window.localStorage.setItem('floors', JSON.stringify(floors.value));
+    };
     return {
-      room
+      room,
+      modifyRoom
     };
   }
 });
