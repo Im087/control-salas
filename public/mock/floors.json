@@ -1,0 +1,94 @@
+{
+  "floors": [
+    {
+      "id": 0,
+      "name": "Planta 1",
+      "rooms": [
+        {
+          "id": 0,
+          "name": "Sala 1",
+          "capacity": 30,
+          "occupation": 50
+        },
+        {
+          "id": 1,
+          "name": "Sala 2",
+          "capacity": 50,
+          "occupation": 80
+        },
+        {
+          "id": 2,
+          "name": "Sala 3",
+          "capacity": 20,
+          "occupation": 75
+        },
+        {
+          "id": 3,
+          "name": "Sala 4",
+          "capacity": 80,
+          "occupation": 50
+        },
+        {
+          "id": 4,
+          "name": "Sala 5",
+          "capacity": 100,
+          "occupation": 20
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Planta 2",
+      "rooms": [
+        {
+          "id": 0,
+          "name": "Sala 1",
+          "capacity": 30,
+          "occupation": 50
+        },
+        {
+          "id": 1,
+          "name": "Sala 2",
+          "capacity": 50,
+          "occupation": 80
+        },
+        {
+          "id": 2,
+          "name": "Sala 3",
+          "capacity": 20,
+          "occupation": 75
+        },
+        {
+          "id": 3,
+          "name": "Sala 4",
+          "capacity": 80,
+          "occupation": 50
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Planta 3",
+      "rooms": [
+        {
+          "id": 0,
+          "name": "Sala 1",
+          "capacity": 30,
+          "occupation": 50
+        },
+        {
+          "id": 1,
+          "name": "Sala 2",
+          "capacity": 50,
+          "occupation": 80
+        },
+        {
+          "id": 2,
+          "name": "Sala 3",
+          "capacity": 20,
+          "occupation": 75
+        }
+      ]
+    }
+  ]
+}
