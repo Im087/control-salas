@@ -24,9 +24,8 @@ export default defineComponent({
       store.dispatch('setFloors', res.floors);
     };
 
-    onMounted(() => {
-      getFloorsData();
-    });
+    getFloorsData();
+
     return {
       HeaderComp,
       FloorComp,

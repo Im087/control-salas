@@ -1,6 +1,6 @@
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
 import { InjectionKey } from 'vue';
-import { Floor, State } from '../interfaces';
+import { Floor, Room, State } from '../interfaces';
 
 export const key: InjectionKey<Store<State>> = Symbol();
 
@@ -23,6 +23,9 @@ export const store = createStore<State>({
     },
     setSelectedFloorId({ commit }, id: number) {
       commit('SET_SELECTED_FLOOR_ID', id);
+    },
+    addRoom({ commit }, id: number) {
+      commit('ADD_ROOM', id);
     }
   },
   mutations: {
@@ -31,6 +34,16 @@ export const store = createStore<State>({
     },
     SET_SELECTED_FLOOR_ID(state: State, id: number) {
       state._selectedFloorId = id;
+    },
+    ADD_ROOM(state: State, id: number) {
+      const currentRoomNumber = state._floors[id].rooms.length;
+      const newRoom: Room = {
+        id: currentRoomNumber,
+        name: `Sala ${currentRoomNumber + 1}`,
+        capacity: 0,
+        occupation: 0
+      }
+      state._floors[id].rooms.push(newRoom);
     }
   }
 });

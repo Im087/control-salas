@@ -1,7 +1,7 @@
 <template>
   <div class="header-comp">
     <h1 class="header-comp_title mb-5">Salas</h1>
-    <select class="header-comp_floor-selector custom-select-lg mb-3" v-model="OptionId" @change="onSelect">
+    <select class="header-comp_floor-selector custom-select-lg mb-3" v-model="OptionId" @change="selectFloor">
       <option v-for="floor in floors" :key="floor.id" :value="floor.id">{{ floor.name }}</option>
     </select>
     <hr>
@@ -32,13 +32,13 @@ export default defineComponent({
     const selectedFloorId = toRefs(props).selectedFloorId;
     const OptionId = ref(selectedFloorId.value);
     
-    const onSelect = () => {
+    const selectFloor = () => {
       store.dispatch('setSelectedFloorId', OptionId.value);
     };
     return {
       floors,
       OptionId,
-      onSelect,
+      selectFloor,
     };
   }
 });
