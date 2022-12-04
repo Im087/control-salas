@@ -3,12 +3,12 @@
     <h3 class="room-comp_title mb-4">{{ room.name }}</h3>
     <div class="d-flex flex-column mb-4">
       <label class="room-comp_label" for="capacity">Capacidad máxima</label>
-      <input type="number" class="room-comp_input form-control-lg" id="capacity" v-model="room.capacity">
+      <input type="number" class="room-comp_input form-control-lg" id="capacity" v-model.lazy="room.capacity">
     </div>
     <div class="d-flex flex-column mb-4">
       <label class="room-comp_label" for="occupation">Ocupación</label>
       <div class="input-group">
-        <input type="number" max="100" class="room-comp_input room-comp_input-prepend form-control-lg" id="occupation" v-model="room.occupation">
+        <input type="number" max="100" class="room-comp_input room-comp_input-prepend form-control-lg" id="occupation" v-model.lazy="room.occupation">
         <div class="input-group-append">
           <div class="room-comp_append input-group-text">%</div>
         </div>
