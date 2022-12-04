@@ -5,7 +5,7 @@
       <label class="room-comp_label" for="capacity">Capacidad máxima</label>
       <input type="number" class="room-comp_input form-control-lg" id="capacity" v-model="room.capacity">
     </div>
-    <div class="d-fle flex-column mb-4">
+    <div class="d-flex flex-column mb-4">
       <label class="room-comp_label" for="occupation">Ocupación</label>
       <div class="input-group">
         <input type="number" max="100" class="room-comp_input room-comp_input-prepend form-control-lg" id="occupation" v-model="room.occupation">
@@ -14,13 +14,17 @@
         </div>
       </div>
     </div>
-    <button class="room-comp_modify-button btn align-self-end px-5 py-3" type="button" @click="modifyRoom">Modificar</button>
+    <div class="d-flex justify-content-between">
+      <button class="room-comp_delete-button btn btn-danger px-5 py-3" type="button" @click="deleteRoom">Borrar</button>
+      <button class="room-comp_modify-button btn px-5 py-3" type="button" @click="modifyRoom">Modificar</button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, toRefs } from 'vue';
 import { Floor, Room } from '../../interfaces';
+import { useStore } from '../../store';
 
 export default defineComponent({
   name: 'RoomComp',
@@ -33,16 +37,28 @@ export default defineComponent({
     room: {
       type: Object as PropType<Room>,
       required: true,
+    },
+    selectedFloorId: {
+      type: Number,
+      required: true
     }
   },
   setup(props) {
+    const store = useStore();
     const floors = toRefs(props).floors;
     const room = toRefs(props).room;
+    const selectedFloorId = toRefs(props).selectedFloorId;
+
+    const deleteRoom = () => {
+      store.dispatch('deleteRoom', [selectedFloorId.value, room.value.id]);
+      window.localStorage.setItem('floors', JSON.stringify(floors.value));
+    };
     const modifyRoom = () => {
       window.localStorage.setItem('floors', JSON.stringify(floors.value));
     };
     return {
       room,
+      deleteRoom,
       modifyRoom
     };
   }
@@ -85,6 +101,10 @@ export default defineComponent({
     border-left: none;
     border-radius: 12px;
     color: #2e344d;
+  }
+
+  &_delete-button {
+    border-radius: 12px;
   }
 
   &_modify-button {

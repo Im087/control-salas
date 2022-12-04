@@ -26,6 +26,9 @@ export const store = createStore<State>({
     },
     addRoom({ commit }, id: number) {
       commit('ADD_ROOM', id);
+    },
+    deleteRoom({ commit }, ids: number[]) {
+      commit('DELETE_ROOM', ids);
     }
   },
   mutations: {
@@ -36,14 +39,20 @@ export const store = createStore<State>({
       state._selectedFloorId = id;
     },
     ADD_ROOM(state: State, id: number) {
-      const currentRoomNumber = state._floors[id].rooms.length;
+      const lastRoom = state._floors[id].rooms.slice().pop();
+      const newRoomId = lastRoom ? lastRoom.id + 1 : 0;
       const newRoom: Room = {
-        id: currentRoomNumber,
-        name: `Sala ${currentRoomNumber + 1}`,
+        id: newRoomId,
+        name: `Sala ${newRoomId + 1}`,
         capacity: 0,
         occupation: 0
       }
       state._floors[id].rooms.push(newRoom);
+    },
+    DELETE_ROOM(state: State, ids: number[]) {
+      const rooms = state._floors[ids[0]].rooms;
+      const index = rooms.findIndex((el: Room) => el.id === ids[1]);
+      rooms.splice(index, 1);
     }
   }
 });
