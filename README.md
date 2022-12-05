@@ -4,7 +4,7 @@
 
 Download
 ```
-git clone git@github.com:Im087/neo.git
+git clone git@github.com:Im087/control-salas.git
 ```
 
 Install
