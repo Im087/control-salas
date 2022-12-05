@@ -1,8 +1,8 @@
 <template>
   <div class="floor-comp p-4">
-    <div class="d-flex justify-content-between mb-3">
-      <h2 class="floor-comp_title">{{ selectedFloor?.name }}</h2>
-      <button class="floor-comp_add-button btn btn-lg px-5 py-3" type="button" @click="addRoom(selectedFloorId)">Añadir sala</button>
+    <div class="d-flex justify-content-between flex-wrap mb-4">
+      <h2 class="floor-comp_title text-primary">{{ selectedFloor?.name }}</h2>
+      <button class="floor-comp_add-button btn btn-primary px-4 py-3" type="button" @click="addRoom(selectedFloorId)">Añadir sala</button>
     </div>
     <Filter-comp :filterConditions="filterConditions"></Filter-comp>
     <div class="d-flex flex-wrap m-n2">
@@ -99,12 +99,9 @@ export default defineComponent({
   &_title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2e344d;
   }
 
   &_add-button {
-    background-color: #2e344d;
-    color: #fff;
     border-radius: 12px;
   }
 }

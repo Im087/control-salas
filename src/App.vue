@@ -42,7 +42,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="control-salas p-5">
+  <div class="control-salas p-3 p-md-5">
     <Header-comp :floors="floors" :selectedFloorId="selectedFloorId"></Header-comp>
     <Floor-comp :floors="floors" :selectedFloorId="selectedFloorId"></Floor-comp>
   </div>

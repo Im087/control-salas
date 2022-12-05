@@ -1,22 +1,22 @@
 <template>
-  <div class="room-comp d-flex flex-column m-2 p-4">
+  <div class="room-comp text-primary bg-secondary d-flex flex-column m-2 p-4">
     <h3 class="room-comp_title mb-4">{{ room.name }}</h3>
     <div class="d-flex flex-column mb-4">
       <label class="room-comp_label" for="capacity">Capacidad máxima</label>
-      <input type="number" class="room-comp_input form-control-lg" id="capacity" v-model.lazy="room.capacity">
+      <input type="number" class="room-comp_input form-control-lg text-primary" id="capacity" v-model.lazy="room.capacity">
     </div>
-    <div class="d-flex flex-column mb-4">
+    <div class="d-flex flex-column">
       <label class="room-comp_label" for="occupation">Ocupación</label>
-      <div class="input-group">
-        <input type="number" max="100" class="room-comp_input room-comp_input-prepend form-control-lg" id="occupation" v-model.lazy="room.occupation">
+      <div class="input-group flex-nowrap">
+        <input type="number" max="100" class="room-comp_input room-comp_input-prepend form-control-lg text-primary w-100" id="occupation" v-model.lazy="room.occupation">
         <div class="input-group-append">
           <div class="room-comp_append input-group-text">%</div>
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-between">
-      <button class="room-comp_delete-button btn btn-danger px-5 py-3" type="button" @click="deleteRoom">Borrar</button>
-      <button class="room-comp_modify-button btn px-5 py-3" type="button" @click="modifyRoom">Modificar</button>
+    <div class="d-flex justify-content-between flex-wrap">
+      <button class="room-comp_delete-button btn btn-danger px-4 py-3 mt-4" type="button" @click="deleteRoom">Borrar</button>
+      <button class="room-comp_modify-button btn btn-primary px-4 py-3 mt-4" type="button" @click="modifyRoom">Modificar</button>
     </div>
   </div>
 </template>
@@ -66,26 +66,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/style/main.scss';
 .room-comp {
-  width: 400px;
+  width: calc(100% - 16px);
+  max-width: 400px;
   border-radius: 26px;
-  background-color: #f5f7fb;
 
   &_title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2e344d;
   }
 
   &_label {
     font-weight: bold;
-    color: #2e344d;
   }
 
   &_input {
     border: #2e344d 1px solid;
     border-radius: 12px;
-    color: #2e344d;
   }
 
   &_input-prepend {
@@ -100,7 +98,6 @@ export default defineComponent({
     border: #2e344d 1px solid;
     border-left: none;
     border-radius: 12px;
-    color: #2e344d;
   }
 
   &_delete-button {
@@ -108,8 +105,6 @@ export default defineComponent({
   }
 
   &_modify-button {
-    background-color: #2e344d;
-    color: #fff;
     border-radius: 12px;
   }
 }

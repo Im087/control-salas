@@ -1,10 +1,10 @@
 <template>
   <div class="header-comp">
-    <h1 class="header-comp_title mb-5">Salas</h1>
-    <select class="header-comp_floor-selector custom-select-lg mb-3" v-model="OptionId" @change="selectFloor">
+    <h1 class="header-comp_title text-primary mb-3 mb-md-5">Salas</h1>
+    <select class="header-comp_floor-selector custom-select-lg text-primary w-100" v-model="OptionId" @change="selectFloor">
       <option v-for="floor in floors" :key="floor.id" :value="floor.id">{{ floor.name }}</option>
     </select>
-    <hr>
+    <hr class="my-3 my-md-5">
   </div>
 </template>
 
@@ -49,14 +49,13 @@ export default defineComponent({
 
   &_title {
     font-weight: bold;
-    color: #2e344d;
   }
 
   &_floor-selector {
-    width: 250px;
+    max-width: 250px;
     border: #2e344d 1px solid;
     border-radius: 12px;
-    color: #2e344d;
+    // color: #2e344d;
   }
 }
 </style>
