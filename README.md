@@ -1,16 +1,27 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## How to run?
 
-## Recommended IDE Setup
+Download
+```
+git clone git@github.com:Im087/neo.git
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+Install
+```
+npm install
+```
 
-## Type Support For `.vue` Imports in TS
+Run
+```
+npm run dev
+```
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## Decisions
+First, I decided what components the application should have. After creating the components, I wanted to implement the floor selecting, room adding/editing/deleting and filtering functionalities. The data must be changeable. APIMOCHA seems too simple. It doesn't allow me to send request to get modified data(after adding/editing/deleting). Therefore, I decided to use a mock json file, vuex and localStorage to provide data, do data operations and communications and store data locally.
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+## Difficulties
+1. APIMOCHA doesn't allow me to send request to get modified data(after adding/editing/deleting). I give up using it.
+2. Some bugs found in coding phase because of Typescript's type check.
+3. When clicking on delet button, a wrong room is deleted because of a logic mistake on .splice() method.
+4. The data communications and logic for filtering rooms are a little complicated.
